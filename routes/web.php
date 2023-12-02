@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\KonsultasiController;
+
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +30,10 @@ Route::get('/contact', function () {
     return view('malaria/contact');
 });
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin-home', 'HomeController@admin')->name('admin-home');
+Route::get('/home', [HomeController::class, 'index'])->name('index');
+Route::get('/admin-home', [HomeController::class, 'admin'])->name('admin-home');
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/admin-home', 'HomeController@admin')->name('admin-home');
 route::get('tentang',function(){
     return view('tentang');
 });
@@ -43,7 +46,7 @@ Route::get('/gejala', 'GejalaController@index');
 
 #konsutasi
 Route::get('/konsultas', [KonsultasiController::class, 'pasienForm'])->name('pasienForm');
-Route::post('/konsultasi', [KonsultasiController::class, 'storePasien'])->name('storePasien');
+Route::get('/konsultasi', [KonsultasiController::class, 'storePasien'])->name('storePasien');
 Route::post('/konsultasi/diagnosa', [KonsultasiController::class, 'diagnosa'])->name('diagnosa');
 Route::get('/konsultas/{pasien_id}/hasil', [KonsultasiController::class, 'hasilDiagnosa'])->name('hasilDiagnosa');
 // Route::get('/konsultasi', 'KonsultasiController@pasienForm')->name('pasienForm');
