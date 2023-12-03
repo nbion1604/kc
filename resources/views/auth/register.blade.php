@@ -38,6 +38,9 @@
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
+                          {{-- @error('password')
+                          <div class="text-danger">{{ $message }}</div>
+                          @enderror --}}
                         </span>
                       </div>
                     </div>
@@ -48,6 +51,9 @@
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
+                          {{-- @error('password')
+                          <div class="text-danger">{{ $message }}</div>
+                          @enderror --}}
                         </span>
                       </div>
                     </div>
@@ -58,6 +64,9 @@
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
+                          {{-- @error('password')
+                          <div class="text-danger">{{ $message }}</div>
+                          @enderror --}}
                         </span>
                       </div>
                     </div>
@@ -68,6 +77,9 @@
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
+                          {{-- @error('password')
+                          <div class="text-danger">{{ $message }}</div>
+                          @enderror --}}
                         </span>
                       </div>
                     </div>

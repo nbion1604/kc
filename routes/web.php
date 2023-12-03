@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\KonsultasiController;
+use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -42,9 +44,22 @@ route::get('pasien','PasienController@index');
 Route::get('/gejala', 'GejalaController@index');
 
 
+// Route::get('/login', [AuthLoginController::class,'index'])->name('login');
 
+Route::group(["namespace" =>"App\Http\Controllers\Auth"], function(){
+    Route::get('/', 'LoginController@index')->name('index');
+    Route::post('/', 'LoginController@post')->name('post');
+
+    Route::group(["as"=>"register.", "prefix"=>"register"], function(){
+        Route::get("/", "RegisterController@index")->name('index');
+        Route::post("/", "RegisterController@post")->name('post');
+    });
+
+    Route::get('/logout', 'LogoutController@logout')->name("logout");
+});
 
 #konsutasi
+
 Route::get('/konsultas', [KonsultasiController::class, 'pasienForm'])->name('pasienForm');
 Route::get('/konsultasi', [KonsultasiController::class, 'storePasien'])->name('storePasien');
 Route::post('/konsultasi/diagnosa', [KonsultasiController::class, 'diagnosa'])->name('diagnosa');
